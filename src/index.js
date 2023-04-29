@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 
 try {
-    await mongoose.connect('mongodb://mongo:PkmCDd9UmgLTm7A95xPT@containers-us-west-139.railway.app:6903')
+    await mongoose.connect('mongodb://mongo:Da29Pos0J9P0q2ThqSyn@containers-us-west-48.railway.app:7640')
     console.log("DB ok");
 } catch (error) {
     console.log(error)
