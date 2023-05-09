@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 
 try {
-    await mongoose.connect('mongodb://mongo:GH1UpR104CpUmquUgcSj@containers-us-west-62.railway.app:7879')
+    await mongoose.connect('mongodb+srv://Drugs:Drugs@cluster0.0pxc1mu.mongodb.net/drugs?retryWrites=true&w=majority')
     console.log("DB ok");
 } catch (error) {
     console.log(error)
@@ -15,15 +15,22 @@ try {
 
 // modelos schema 
 
-const dateSchema = new mongoose.Schema({
-    dia: String
+const alarmaSchema = new mongoose.Schema({
+    hour: String,
+    day: Array,
+    info:String,
+    cajon: String,
+    usuario: Object
 });
+  
 
-const Date = mongoose.model("Date",dateSchema);
+//Crear modelo
+const Alarma = mongoose.model('Alarma', alarmaSchema)
+
 
 // Rutas
     app.get('/',(req,res) =>{
-        Date.find().then(date => res.json(date)).catch(error => res.json(error))
+        Alarma.find().then(date => res.json(date)).catch(error => res.json(error))
     })
 
     app.post('/',(req,res)=>{
